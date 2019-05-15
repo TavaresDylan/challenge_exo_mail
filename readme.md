@@ -10,7 +10,7 @@
 
 - Sinon 
  déclarer $\_SESSION["mail"]
- et afficher raffréchir la page pour re-envoyer le mail
+ et afficher rafraîchir la page pour re-envoyer le mail
 
 ## 2 - Tant que 1 pas fini ne pas faire 2
 
