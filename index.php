@@ -51,12 +51,13 @@ function envoiMail($objet, $mailto, $msg, $cci = true)//:string
 	// Send the message
 	return $mailer->send($message);
 }
-//if (isset($_SESSION["mail"]) && isset($_SESSION["mailto"])) {
+if (isset($_SESSION["mail"]) && isset($_SESSION["mailto"])) {
 	echo envoiMail(  "Test Dylan",
             		[$_POST["mailto"], $_POST["mailto"]],
             		["html" => "", "text"=> "Ceci est un test"]
           		 	);
-//}
+}
+	unset($_SESSION["mail"]);
 
 ?>
 
