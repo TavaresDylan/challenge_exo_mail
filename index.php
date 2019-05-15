@@ -1,24 +1,8 @@
 <?php 
 session_start();
-$_SESSION["mail"] = "ok";
 
-/* NON FONCTIONNEL
-function token($nb_char = 24, $chaine ='azertyuiopqsdfghjklmwxcvbn123456789'){
-	$nb_lettre = strlen($chaine) -1;
-	$generation = '';
-	for ($i=0; $i > $nb_char ; $i++) { 
-		$pos = mt_rand(0, $nb_lettre);
-		$char = $chaine[$pos];
-		$generation .= $char;
-
-	}
-return $generation;
-}
-
-		$token = token(12);
-		var_dump($token);
-		die();
-		*/
+$token = substr(uniqid(), 1, 12);
+var_dump($token);
 
 function envoiMail($objet, $mailto, $msg, $cci = true)//:string
 {
@@ -63,14 +47,17 @@ function envoiMail($objet, $mailto, $msg, $cci = true)//:string
 if (isset($_SESSION["mail"]) && $_SESSION["mail"] == "ok") {
 	echo envoiMail(  "Test Dylan",
             		["tavares.dylan03@gmail.com"],
-            		["html" => "", "text"=> "Ceci est un test ".$token]
+            		["html" => "", "text"=> "Ceci est un test votre token est : ".$token]
           		 	);
+	echo 'Votre surprise est envoyé !!!';
+	fopen($token, 'w');
+	unset($_SESSION["mail"]);
 					
 }else{
 	$_SESSION["mail"] = "ok";
-	echo ('Rafaîchir la page pour votre surprise');
+	echo 'Rafaîchir la page pour votre surprise';
 }
-	unset($_SESSION["mail"]);
+	
 	
 
 ?>
